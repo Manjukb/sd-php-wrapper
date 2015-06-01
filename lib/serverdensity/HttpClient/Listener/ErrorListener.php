@@ -93,11 +93,11 @@ class ErrorListener
     }
 
     public function isClientError($response){
-        return $response->getStatusCode() >=400 && $response->getStatusCode() < 500;
+        return is_null($response) ? FALSE : $response->getStatusCode() >=400 && $response->getStatusCode() < 500;
     }
 
     public function isServerError($response)
     {
-        return $response->getStatusCode() >= 500 && $response->getStatusCode() < 600;
+        return is_null($response) ? FALSE : $response->getStatusCode() >= 500 && $response->getStatusCode() < 600;
     }
 }
