@@ -66,7 +66,6 @@ class Metrics extends AbstractApi
             $xPoints = array();
             $yPoints = array();
             foreach($graph['data'] as $point){
-                print_r($point);
                 $xPoints[] = $point['x'];
                 $yPoints[] = $point['y'];
             }
