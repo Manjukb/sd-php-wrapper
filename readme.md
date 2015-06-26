@@ -28,6 +28,8 @@ To run functional tests you need to type in the following. This will only run th
     // A basic call to view devices
     $devices = $client->api('devices')->all();
     
+A longer list of examples can be found among our [api docs](https://apidocs.serverdensity.com/?php#)
+    
 ### Installing the wrapper
 
 Copy the json below into composer.json and run `php composer.phar install`. You can find the package itself on the [packagist](https://packagist.org/packages/serverdensity/sd-api-wrapper)
