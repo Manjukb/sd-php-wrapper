@@ -28,6 +28,15 @@ To run functional tests you need to type in the following. This will only run th
     // A basic call to view devices
     $devices = $client->api('devices')->all();
     
+### Installing the wrapper
+
+Copy the json below into composer.json and run `php composer.phar install`. You can find the package itself on the [packagist](https://packagist.org/packages/serverdensity/sd-api-wrapper)
+
+    {
+        "require": {
+            "serverdensity/sd-api-wrapper": ">=0.7.4"
+        }
+    }
 
 The following verbs exist
 * Create - creating a resource, takes an array
