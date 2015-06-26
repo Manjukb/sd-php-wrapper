@@ -96,11 +96,14 @@ class Alerts extends AbstractApi
     * @param    string  $subjectId      optional subjectID to filter on.
     * @return   an array of arrays with devices.
     */
-    public function triggered($closed, $subjectType, $subjectId=''){
-        $fields = array(
-            'closed' => $closed,
-            'subjectType' => $subjectType
-        );
+    public function triggered($closed='', $subjectType='', $subjectId=''){
+        $fields = array();
+        if(!empty($closed)){
+            $fields['closed'] = $closed;
+        }
+        if (!empty($subjectType)) {
+            $fields['subjectType'] = $subjectType;
+        }
 
         return $this->get('alerts/triggered/'.rawurlencode($subjectId), $fields);
     }
