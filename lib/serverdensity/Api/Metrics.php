@@ -16,8 +16,8 @@ class Metrics extends AbstractApi
     */
     public function available($id, $start, $end){
         $param = array(
-            'start' => date("Y-m-d\TH:i:s\Z", $start),
-            'end' => date("Y-m-d\TH:i:s\Z", $end)
+            'start' => gmdate("Y-m-d\TH:i:s\Z", $start),
+            'end' => gmdate("Y-m-d\TH:i:s\Z", $end)
         );
 
         return $this->get('metrics/definitions/'.urlencode($id), $param);
@@ -35,8 +35,8 @@ class Metrics extends AbstractApi
     */
     public function metrics($id, $filter, $start, $end){
         $param = array(
-            'start' => date("Y-m-d\TH:i:s\Z", $start),
-            'end' => date("Y-m-d\TH:i:s\Z", $end),
+            'start' => gmdate("Y-m-d\TH:i:s\Z", $start),
+            'end' => gmdate("Y-m-d\TH:i:s\Z", $end),
             'filter' => $filter
         );
 
