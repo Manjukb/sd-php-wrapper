@@ -45,6 +45,27 @@ class Metrics extends AbstractApi
         return $this->get('metrics/graphs/'.urlencode($id), $param);
     }
 
+    /**
+    * Get dynamic metrics
+    * @link     https://apidocs.serverdensity.com/?python#get-metrics
+    * @param 	string		$inventoryFilter the filter to use to find inventory    
+    * @param    array       $filter an array of what you want to filter
+    * @param    timestamp   $start  the start of the period.
+    * @param    timestamp   $end    the end of the period
+    * @return   an array that is all available metrics.
+    */
+    public function dynamicMetrics($inventoryFilter, $filter, $start, $end){
+        $param = array(
+            'start' => gmdate("Y-m-d\TH:i:s\Z", $start),
+            'end' => gmdate("Y-m-d\TH:i:s\Z", $end),
+            'filter' => $filter
+        );
+
+        $param = $this->makeJsonReady($param);
+
+        return $this->get('metrics/dynamicgraphs/?inventoryFilter='.urlencode($inventoryFilter), $param);
+    }
+
     private function collectData($tree){
         foreach($tree as $tr){
             if (key_exists('data', $tr)) {
