@@ -48,7 +48,7 @@ class Metrics extends AbstractApi
     /**
     * Get dynamic metrics
     * @link     https://apidocs.serverdensity.com/?python#get-metrics
-    * @param 	string		$inventoryFilter the filter to use to find inventory    
+    * @param 	string		$inventoryFilter the filter to use to find inventory
     * @param    array       $filter an array of what you want to filter
     * @param    timestamp   $start  the start of the period.
     * @param    timestamp   $end    the end of the period
@@ -56,8 +56,8 @@ class Metrics extends AbstractApi
     */
     public function dynamicMetrics($inventoryFilter, $filter, $start, $end){
         $param = array(
-            'start' => gmdate("Y-m-d\TH:i:s\Z", $start),
-            'end' => gmdate("Y-m-d\TH:i:s\Z", $end),
+            'start' => date("Y-m-d\TH:i:s\Z", $start),
+            'end' => date("Y-m-d\TH:i:s\Z", $end),
             'filter' => $filter
         );
 
