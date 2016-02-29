@@ -48,23 +48,19 @@ class Metrics extends AbstractApi
     /**
     * Get dynamic metrics
     * @link     https://apidocs.serverdensity.com/?python#get-metrics
-    * @param 	string		$inventoryFilter the filter to use to find inventory
     * @param    array       $filter an array of what you want to filter
     * @param    timestamp   $start  the start of the period.
     * @param    timestamp   $end    the end of the period
+    * @param    string      $inventoryFilter the filter to use to find inventory
+    * @param    array       $ids an array of ids that you want to filter for.
+    * @param    array       $names an array of names that you would like to filter for.
     * @return   an array that is all available metrics.
     */
-    public function dynamicMetrics($filter, $start, $end, $inventoryFilter=Null, $ids=Null, $names=Null){
+    public function dynamicMetrics($filter, $start, $end, $inventoryFilter=Null){
         $urlencoded = '';
         $query = array();
         if (isset($inventoryFilter)){
             $query['inventoryFilter'] = $inventoryFilter;
-        }
-        if (isset($ids)){
-            $query['ids'] = $ids;
-        }
-        if (isset($names)){
-            $query['names'] = $names;
         }
         if (!empty($query)){
             $urlencoded = '?' . http_build_query($query);
