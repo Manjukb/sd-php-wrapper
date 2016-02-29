@@ -61,9 +61,9 @@ class MetricsTest extends TestCase
         $api = $this->getApiMock('metrics');
         $api->expects($this->once())
             ->method('get')
-            ->with('metrics/dynamicgraphs/?inventoryFilter=' . 'test', $expectedParam);
+            ->with('metrics/dynamicgraphs/?inventoryFilter=test&ids=123&names=myname', $expectedParam);
 
-        $result = $api->dynamicMetrics($searchPattern, $filter, $start, $end);
+        $result = $api->dynamicMetrics($filter, $start, $end, $searchPattern, '123', 'myname');
 
     }
 

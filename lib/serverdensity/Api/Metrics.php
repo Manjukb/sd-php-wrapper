@@ -54,7 +54,22 @@ class Metrics extends AbstractApi
     * @param    timestamp   $end    the end of the period
     * @return   an array that is all available metrics.
     */
-    public function dynamicMetrics($inventoryFilter, $filter, $start, $end){
+    public function dynamicMetrics($filter, $start, $end, $inventoryFilter=Null, $ids=Null, $names=Null){
+        $urlencoded = '';
+        $query = array();
+        if (isset($inventoryFilter)){
+            $query['inventoryFilter'] = $inventoryFilter;
+        }
+        if (isset($ids)){
+            $query['ids'] = $ids;
+        }
+        if (isset($names)){
+            $query['names'] = $names;
+        }
+        if (!empty($query)){
+            $urlencoded = '?' . http_build_query($query);
+        }
+
         $param = array(
             'start' => date("Y-m-d\TH:i:s\Z", $start),
             'end' => date("Y-m-d\TH:i:s\Z", $end),
@@ -63,7 +78,7 @@ class Metrics extends AbstractApi
 
         $param = $this->makeJsonReady($param);
 
-        return $this->get('metrics/dynamicgraphs/?inventoryFilter='.urlencode($inventoryFilter), $param);
+        return $this->get('metrics/dynamicgraphs/' . $urlencoded, $param);
     }
 
     private function collectData($tree){
