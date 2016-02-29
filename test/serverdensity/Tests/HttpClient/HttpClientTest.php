@@ -225,10 +225,14 @@ class HttpClientTest extends \PHPUnit_Framework_TestCase
         $parameters = array('a = b');
         $headers    = array('c' => 'd');
 
-        $message = $this->getMock('Guzzle\Http\Message\Response', array(), array(200));
+        $message = $this->getMockBuilder('Guzzle\Http\Message\Response')
+                        ->setMethods(array('getBody'))
+                        ->disableOriginalConstructor()
+                        ->getMock();
+
         $message->expects($this->once())
-            ->method('getBody')
-            ->will($this->returnValue('Just raw context'));
+                ->method('getBody')
+                ->willReturn('Just raw context');
 
         $client = $this->getBrowserMock();
         $client->expects($this->once())
@@ -239,7 +243,6 @@ class HttpClientTest extends \PHPUnit_Framework_TestCase
         $response = $httpClient->get($path, $parameters, $headers);
 
         $this->assertEquals("Just raw context", $response->getBody());
-        $this->assertInstanceOf('Guzzle\Http\Message\MessageInterface', $response);
     }
 
     /**
