@@ -225,7 +225,7 @@ class HttpClientTest extends \PHPUnit_Framework_TestCase
         $parameters = array('a = b');
         $headers    = array('c' => 'd');
 
-        $message = $this->getMock('Guzzle\Http\Message\Response', array(), array(200));
+        $message = $this->getMock('Guzzle\Http\Message\Response', array());
         $message->expects($this->once())
             ->method('getBody')
             ->will($this->returnValue('Just raw context'));
