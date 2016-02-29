@@ -243,7 +243,6 @@ class HttpClientTest extends \PHPUnit_Framework_TestCase
         $response = $httpClient->get($path, $parameters, $headers);
 
         $this->assertEquals("Just raw context", $response->getBody());
-        $this->assertInstanceOf('Guzzle\Http\Message\MessageInterface', $response);
     }
 
     /**
