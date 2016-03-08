@@ -35,8 +35,8 @@ class AlertsTest extends TestCase
         $expectedArray = array('_id' => '1', 'section' => 'system');
 
         $expectedArray['recipients'] = json_encode($recipients);
-        $expectedArray['wait'] = json_encode($recipients);
-        $expectedArray['repeat'] = json_encode($recipients);
+        $expectedArray['wait'] = json_encode($wait);
+        $expectedArray['repeat'] = json_encode($repeat);
 
 
 

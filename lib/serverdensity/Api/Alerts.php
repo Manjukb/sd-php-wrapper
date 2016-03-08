@@ -15,8 +15,8 @@ class Alerts extends AbstractApi
     */
     public function create($alert, $recipients, $wait, $repeat){
         $alert['recipients'] = json_encode($recipients);
-        $alert['wait'] = json_encode($recipients);
-        $alert['repeat'] = json_encode($recipients);
+        $alert['wait'] = json_encode($wait);
+        $alert['repeat'] = json_encode($repeat);
 
         return $this->post('alerts/configs/', $alert);
     }
@@ -53,10 +53,10 @@ class Alerts extends AbstractApi
             $fields['wait'] = json_encode($other['wait']);
         }
         if(array_key_exists('recipients', $other)){
-            $fields['recipients'] = json_encode($other['wait']);
+            $fields['recipients'] = json_encode($other['recipients']);
         }
         if(array_key_exists('repeat', $other)){
-            $fields['repeat'] = json_encode($other['wait']);
+            $fields['repeat'] = json_encode($other['repeat']);
         }
 
 
