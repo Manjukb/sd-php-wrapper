@@ -6,7 +6,7 @@ class Users extends AbstractApi
 {
     /**
     * View user by ID
-    * @link     https://apidocs.serverdensity.com/#viewing-a-user
+    * @link     https://developer.serverdensity.com/docs/viewing-a-user
     * @param    string  $id the id of the user.
     * @return   an array that is the user.
     */
@@ -16,7 +16,7 @@ class Users extends AbstractApi
 
     /**
     * Get all users
-    * @link     https://apidocs.serverdensity.com/#listing-all-users
+    * @link     https://developer.serverdensity.com/docs/listing-all-users
     * @return   an array of arrays that contains the users.
     */
     public function all(){
@@ -25,7 +25,7 @@ class Users extends AbstractApi
 
     /**
     * Delete user
-    * @link     https://apidocs.serverdensity.com/#deleting-a-user
+    * @link     https://developer.serverdensity.com/docs/deleting-a-user
     * @param    string $id the id of the user
     * @return   an array with the user that got deleted
     */
@@ -36,7 +36,7 @@ class Users extends AbstractApi
 
     /**
     * Create a user
-    * @link     https://apidocs.serverdensity.com/#creating-a-user
+    * @link     https://developer.serverdensity.com/docs/creating-a-user
     * @param    array $user
     * @return   an array with the user that got created
     */
@@ -67,7 +67,7 @@ class Users extends AbstractApi
 
     /**
     * Update a user
-    * @link     https://apidocs.serverdensity.com/#updating-a-user
+    * @link     https://developer.serverdensity.com/docs/updating-a-user
     * @param    string $id
     * @param    array $fields
     * @return   an array with the fields that got updated plus when it got updated

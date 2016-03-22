@@ -7,7 +7,7 @@ class Services extends AbstractApi
 
     /**
     * Create a service
-    * @link     https://apidocs.serverdensity.com/?python#creating-a-service
+    * @link     https://developer.serverdensity.com/docs/creating-a-service
     * @param    array  $service with all it's attributes.
     * @return   an array that is the device.
     */
@@ -31,7 +31,7 @@ class Services extends AbstractApi
 
     /**
     * Delete a service
-    * @link     https://apidocs.serverdensity.com/?python#deleting-a-service
+    * @link     https://developer.serverdensity.com/docs/deleting-a-service
     * @param    string  $id     the id of the service
     * @return   an array that is the service id.
     */
@@ -41,7 +41,7 @@ class Services extends AbstractApi
 
     /**
     * List all services
-    * @link     https://apidocs.serverdensity.com/?python#listing-services
+    * @link     https://developer.serverdensity.com/docs/listing-services
     * @return   an array of arrays with all services.
     */
     public function all(){
@@ -50,7 +50,7 @@ class Services extends AbstractApi
 
     /**
     * Search a service
-    * @link     https://apidocs.serverdensity.com/?python#searching-for-a-service
+    * @link     https://developer.serverdensity.com/docs/searching-for-a-service
     * @param    array   $filter     an array of arrays of fields to filter on
     * @param    array   $fields     an array of fields to keep in search
     * @return   an array of arrays with all services.
@@ -65,8 +65,8 @@ class Services extends AbstractApi
     }
 
     /**
-    * List all services
-    * @link     https://apidocs.serverdensity.com/?python#updating-a-service
+    * Update a service
+    * @link     https://developer.serverdensity.com/docs/updating-a-service
     * @param    string  $id     id of the device to change
     * @param    array   $fields an array of array of fields that you want to change
     * @return   an array of arrays with all services.
@@ -78,7 +78,7 @@ class Services extends AbstractApi
 
     /**
     * View service by ID
-    * @link     https://apidocs.serverdensity.com/?python#updating-a-service
+    * @link     https://developer.serverdensity.com/docs/view-service-by-id
     * @param    $id     an id of the service
     * @return   an array of arrays with all services.
     */

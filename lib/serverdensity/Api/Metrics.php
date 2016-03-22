@@ -8,7 +8,7 @@ class Metrics extends AbstractApi
 
     /**
     * Get available metrics
-    * @link     https://apidocs.serverdensity.com/?python#available-metrics
+    * @link     https://developer.serverdensity.com/docs/available-metrics
     * @param    string      $id     the subjectID to get available metrics
     * @param    timestamp   $start  the start of the period.
     * @param    timestamp   $end    the end of the period
@@ -26,7 +26,7 @@ class Metrics extends AbstractApi
 
     /**
     * Get actual metrics
-    * @link     https://apidocs.serverdensity.com/?python#get-metrics
+    * @link     https://developer.serverdensity.com/docs/get-metrics
     * @param    string      $id     the subjectID to get available metrics
     * @param    array       $filter an array of what you want to filter
     * @param    timestamp   $start  the start of the period.
@@ -47,7 +47,7 @@ class Metrics extends AbstractApi
 
     /**
     * Get dynamic metrics
-    * @link     https://apidocs.serverdensity.com/?python#get-metrics
+    * @link     https://developer.serverdensity.com/docs/dynamic-metrics
     * @param    array       $filter an array of what you want to filter
     * @param    timestamp   $start  the start of the period.
     * @param    timestamp   $end    the end of the period
