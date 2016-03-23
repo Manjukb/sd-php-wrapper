@@ -155,8 +155,6 @@ class DevicesTest extends TestCase
         $this->assertEquals($expectedArray, $api->viewByAgent($agentKey));
     }
 
-
-
     /**
     * @test
     */
@@ -171,5 +169,24 @@ class DevicesTest extends TestCase
             ->will($this->returnValue($expectedArray));
 
         $this->assertEquals($expectedArray, $api->view('1'));
-    }  
+    }
+
+    /**
+    * @test
+    */
+    public function shouldGetDeviceGroups(){
+        $expectedArray = array(
+            array('_id' => '1', 'name' => 'myDeviceGroup'),
+            array('_id' => '2', 'name' => 'myDeviceGroup2')
+        );
+
+        $api = $this->getApiMock('devices');
+
+        $api->expects($this->once())
+            ->method('get')
+            ->with('inventory/devices/groups')
+            ->will($this->returnValue($expectedArray));
+
+        $this->assertEquals($expectedArray, $api->deviceGroups('1'));
+    }    
 }

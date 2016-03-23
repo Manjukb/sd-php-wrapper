@@ -147,4 +147,23 @@ class ServicesTest extends TestCase
         $this->assertEquals($expectedArray, $api->view('1'));
     }
 
+        /**
+    * @test
+    */
+    public function shouldGetDeviceGroups(){
+        $expectedArray = array(
+            array('_id' => '1', 'name' => 'myServiceGroup'),
+            array('_id' => '2', 'name' => 'myServiceGroup2')
+        );
+
+        $api = $this->getApiMock('devices');
+
+        $api->expects($this->once())
+            ->method('get')
+            ->with('inventory/services/groups')
+            ->will($this->returnValue($expectedArray));
+
+        $this->assertEquals($expectedArray, $api->serviceGroups('1'));
+    } 
+
 }
