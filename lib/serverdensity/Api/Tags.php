@@ -11,7 +11,7 @@ class Tags extends AbstractApi
 
     /**
     * Find a tag by ID
-    * @link     https://apidocs.serverdensity.com/#viewing-an-indvidual-tag
+    * @link     https://developer.serverdensity.com/docs/viewing-an-individual-tag
     * @param    string  $id the id of the tag.
     * @return   an array that is the tag.
     */
@@ -22,7 +22,7 @@ class Tags extends AbstractApi
 
     /**
     * Get all tags
-    * @link     https://apidocs.serverdensity.com/#view-all-tags
+    * @link     https://developer.serverdensity.com/docs/view-all-tags
     * @return   an array of arrays that contains all the tags.
     */
     public function all()
@@ -32,7 +32,7 @@ class Tags extends AbstractApi
 
     /**
     * Delete tag
-    * @link     https://apidocs.serverdensity.com/#deleting-a-tag
+    * @link     https://developer.serverdensity.com/docs/deleting-a-tag
     * @param    string $id the id of the tag
     * @return   an array with the id of the tag that got deleted
     */
@@ -119,7 +119,7 @@ class Tags extends AbstractApi
 
     /**
     * Create a tag
-    * @link     https://apidocs.serverdensity.com/?shell#creating-new-tags
+    * @link     https://developer.serverdensity.com/docs/tags
     * @param    string $name name of tag
     * @param    string $hexColor hexcolor of tag
     * @return   an array with the fields of the tag that got created
@@ -142,7 +142,7 @@ class Tags extends AbstractApi
 
     /**
     * Update a tag
-    * @link     https://apidocs.serverdensity.com/?shell#updating-a-tag
+    * @link     https://developer.serverdensity.com/docs/updating-a-tag
     * @param    string $id
     * @param    array $fields
     * @return   an array with the fields that got updated plus when it got updated

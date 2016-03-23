@@ -6,7 +6,7 @@ class Devices extends AbstractApi
 {
     /**
     * Create a device
-    * @link     https://apidocs.serverdensity.com/?shell#creating-a-device
+    * @link     https://developer.serverdensity.com/v2.0/docs/creating-a-device
     * @param    array  $device with all its attributes.
     * @return   an array that is the device.
     */
@@ -30,7 +30,7 @@ class Devices extends AbstractApi
 
     /**
     * Delete device by ID
-    * @link     https://apidocs.serverdensity.com/?shell#deleting-a-device
+    * @link     https://developer.serverdensity.com/docs/deleting-a-device
     * @param    string  $id the id of the device.
     * @return   an array with the device id that got deleted.
     */
@@ -40,7 +40,7 @@ class Devices extends AbstractApi
 
     /**
     * Get all devices
-    * @link     https://apidocs.serverdensity.com/?shell#listing-all-devices
+    * @link     https://developer.serverdensity.com/docs/listing-all-devices
     * @return   an array of arrays with devices.
     */
     public function all(){
@@ -49,7 +49,7 @@ class Devices extends AbstractApi
 
     /**
     * Search for a device
-    * @link     https://apidocs.serverdensity.com/?python#searching-for-a-device
+    * @link     https://developer.serverdensity.com/docs/searching-for-a-device
     * @param    array   $filter     an array of fields with which to search.
     * @param    array   $fields     an array of fields to keep in output.
     * @return   an array of arrays with devices.
@@ -65,7 +65,7 @@ class Devices extends AbstractApi
 
     /**
     * Update device by ID
-    * @link     https://apidocs.serverdensity.com/?python#updating-a-device
+    * @link     https://developer.serverdensity.com/docs/updating-a-device
     * @param    string  $id         an id of the device
     * @param    array   $fields     an array of fields that is to be updated
     * @return   an array of arrays with devices.
@@ -77,7 +77,7 @@ class Devices extends AbstractApi
 
     /**
     * View device by Agentkey
-    * @link     https://apidocs.serverdensity.com/?python#view-device-by-agent-key
+    * @link     https://developer.serverdensity.com/docs/view-device-by-agent-key
     * @param    string  $agentKey    the agentKey of the device
     * @return   an array with the device.
     */
@@ -87,11 +87,12 @@ class Devices extends AbstractApi
 
     /**
     * View device by ID
-    * @link     https://apidocs.serverdensity.com/?shell#view-device-by-id
+    * @link     https://developer.serverdensity.com/docs/view-device-by-id
     * @param    string  $id the id of the device.
     * @return   an array that is the device.
     */
     public function view($id){
         return $this->get('inventory/devices/'.rawurlencode($id));
     }
+
 }
