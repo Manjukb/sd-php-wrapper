@@ -12,7 +12,7 @@ class DevicesTest extends TestCase
     /**
     * @test
     */
-    public function shouldCreateUser(){
+    public function shouldCreateDevice(){
         $input = array(
             '_id' => '1',
             'name' => 'myDevice',
@@ -171,5 +171,5 @@ class DevicesTest extends TestCase
             ->will($this->returnValue($expectedArray));
 
         $this->assertEquals($expectedArray, $api->view('1'));
-    }
+    }  
 }
