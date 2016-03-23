@@ -30,7 +30,7 @@ class UserTest extends TestCase
             "firstName" => "Llama",
             "lastName" => "Hat",
             "login" => "llama",
-            "password" => "password",
+            "password" => "testpassword",
             "emailAddresses" => array(
                 "llama@gmail.com"
             ),
@@ -62,7 +62,7 @@ class UserTest extends TestCase
             "firstName" => "Llama2",
             "lastName" => "Hat2",
             "login" => "llama2",
-            "password" => "password",
+            "password" => "testpassword",
             "emailAddresses" => array(
                 "llama2@gmail.com"
             ),
