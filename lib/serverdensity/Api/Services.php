@@ -86,5 +86,13 @@ class Services extends AbstractApi
         return $this->get('inventory/services/'.rawurlencode($id));
     }
 
+    /**
+    * View service groups
+    * @link     https://developer.serverdensity.com/docs/listing-service-groups
+    * @return   an array of device groups.
+    */
+    public function serviceGroups(){
+        return $this->get('inventory/services/groups');
+    }
 
 }

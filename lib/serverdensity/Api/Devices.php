@@ -95,4 +95,13 @@ class Devices extends AbstractApi
         return $this->get('inventory/devices/'.rawurlencode($id));
     }
 
+    /**
+    * View device groups
+    * @link     https://developer.serverdensity.com/docs/listing-device-groups
+    * @return   an array of device groups.
+    */
+    public function deviceGroups(){
+        return $this->get('inventory/devices/groups');
+    }
+
 }
