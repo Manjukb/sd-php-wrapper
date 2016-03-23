@@ -21,6 +21,7 @@ class ServicesTest extends TestCase
             "timeout" => 10,
             "checkLocations" => ['lon'],
             "slowThreshold" => 100,
+            "group" => "ServiceGroup"
 
         );
 
@@ -155,7 +156,14 @@ class ServicesTest extends TestCase
         $this->assertEquals($createdService['_id'], $result['_id']);
 
     }
+    /**
+    * @test
+    * @depends shouldCreateService
+    */
+    public function shouldViewAllServiceroups(){
 
+        $result = $this->client->api('services')->serviceGroups();
 
-
+        $this->assertGreaterThan(0, count($result));
+    }
 }

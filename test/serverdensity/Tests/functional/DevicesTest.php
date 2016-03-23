@@ -15,7 +15,8 @@ class DevicesTest extends TestCase
     public function shouldCreateDevice(){
         $device = array(
             "name" => "MyNewDevice",
-            "publicIPs" => array("192.161.1.1")
+            "publicIPs" => array("192.161.1.1"),
+            "group" => "TestGroup"
         );
 
         $createdDevice = $this->client->api('devices')->create($device);
@@ -153,6 +154,17 @@ class DevicesTest extends TestCase
         $this->setExpectedException('serverdensity\Exception\NotFoundException');
         $result = $this->client->api('devices')->delete($createdDevice['_id']);
 
+    }
+
+    /**
+    * @test
+    * @depends shouldCreateDevice
+    */
+    public function shouldViewAllDeviceGroups(){
+
+        $result = $this->client->api('devices')->deviceGroups();
+
+        $this->assertGreaterThan(0, count($result));
     }
 
 }
