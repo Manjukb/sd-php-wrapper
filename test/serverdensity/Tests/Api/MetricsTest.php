@@ -16,19 +16,15 @@ class MetricsTest extends TestCase
     {
 
         $expectedParam = array(
-            'start' => "2013-09-15T00:00:00Z",
-            'end' => "2013-09-15T17:10:00Z"
+            'filter' => urlencode('{"scope": [{"item": "1"}]}')
         );
-
-        $start = mktime(0, 0, 0, 9, 15, 2013);
-        $end = mktime(17, 10, 0, 9, 15, 2013);
 
         $api = $this->getApiMock('metrics');
         $api->expects($this->once())
             ->method('get')
-            ->with('metrics/definitions/1', $expectedParam);
+            ->with('metrics/v3/metrics/', $expectedParam);
 
-        $result = $api->available('1', $start, $end);
+        $result = $api->available('1');
     }
 
     /**

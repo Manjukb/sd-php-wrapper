@@ -10,17 +10,14 @@ class Metrics extends AbstractApi
     * Get available metrics
     * @link     https://developer.serverdensity.com/docs/available-metrics
     * @param    string      $id     the subjectID to get available metrics
-    * @param    timestamp   $start  the start of the period.
-    * @param    timestamp   $end    the end of the period
     * @return   an array that is all available metrics.
     */
-    public function available($id, $start, $end){
+    public function available($id){
         $param = array(
-            'start' => date("Y-m-d\TH:i:s\Z", $start),
-            'end' => date("Y-m-d\TH:i:s\Z", $end)
+            'filter' => urlencode('{"scope": [{"item": "'.$id.'"}]}')
         );
 
-        return $this->get('metrics/definitions/'.urlencode($id), $param);
+        return $this->get('metrics/v3/metrics/', $param);
     }
 
 
