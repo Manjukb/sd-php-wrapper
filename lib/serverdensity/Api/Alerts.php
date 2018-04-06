@@ -85,7 +85,7 @@ class Alerts extends AbstractApi
     * @return   an array of arrays with devices.
     */
     public function view($id){
-        return $this->get('alerts/configs/'.rawurlencode($id));
+        return $this->get('alerts/v3/configs/'.rawurlencode($id));
     }
 
     /**
