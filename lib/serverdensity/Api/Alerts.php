@@ -72,9 +72,8 @@ class Alerts extends AbstractApi
     * @return   an array of arrays with devices.
     */
     public function bySubject($subjectId, $subjectType){
-        $type = array('subjectType' => $subjectType);
-
-        return $this->get('alerts/configs/'.rawurlencode($subjectId), $type);
+        $filter = array('filter' => '{"scope":{"type":"'.$subjectType.'","value":"'.$subjectId.'"}}');
+        return $this->get('alerts/v3/configs/', $filter);
     }
 
 

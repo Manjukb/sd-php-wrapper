@@ -127,16 +127,15 @@ class AlertsTest extends TestCase
             array('_id' => '2', 'section' => 'system', 'subjectId' => '1')
         );
 
-        $inputSubject = 'device';
-        $subjectType = array('subjectType' => $inputSubject);
+        $inputFilter = array('filter' => '{"scope":{"type":"device","value":"1"}}');
 
         $api = $this->getApiMock('alerts');
         $api->expects($this->once())
             ->method('get')
-            ->with('alerts/configs/1', $subjectType)
+            ->with('alerts/v3/configs/', $inputFilter)
             ->will($this->returnValue($expectedArray));
 
-        $this->assertEquals($expectedArray, $api->bySubject('1', $inputSubject));
+        $this->assertEquals($expectedArray, $api->bySubject('1', 'device'));
     }
 
     /**
