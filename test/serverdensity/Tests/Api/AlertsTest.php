@@ -58,7 +58,7 @@ class AlertsTest extends TestCase
         $api = $this->getApiMock('alerts');
         $api->expects($this->once())
             ->method('HTTPdelete')
-            ->with('alerts/configs/1')
+            ->with('alerts/v3/configs/1')
             ->will($this->returnValue($expectedArray));
 
         $this->assertEquals($expectedArray, $api->delete('1'));

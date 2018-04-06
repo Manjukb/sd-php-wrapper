@@ -28,7 +28,7 @@ class Alerts extends AbstractApi
     * @return   an array with the alert id that got deleted.
     */
     public function delete($id){
-        return $this->HTTPdelete('alerts/configs/'.rawurlencode($id));
+        return $this->HTTPdelete('alerts/v3/configs/'.rawurlencode($id));
     }
 
     /**
