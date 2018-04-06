@@ -27,42 +27,6 @@ class MetricsTest extends TestCase
         $result = $api->available('1');
     }
 
-    /**
-    * @test
-    */
-    public function shouldGetDynamicGraphs()
-    {
-        $expectedParam = array(
-            'start' => "2013-09-15T00:00:00Z",
-            'end' => "2013-09-15T17:10:00Z"
-        );
-
-        $start = mktime(0, 0, 0, 9, 15, 2013);
-        $end = mktime(17, 10, 0, 9, 15, 2013);
-
-        $filter = json_encode(array(
-            'networkTraffic' => array(
-                'eth0' => ['rxMByteS']
-            ))
-        );
-
-        $expectedParam = array(
-            'start' => "2013-09-15T00:00:00Z",
-            'end' => "2013-09-15T17:10:00Z",
-            'filter' => $filter
-        );
-
-        $searchPattern = 'test';
-
-        $api = $this->getApiMock('metrics');
-        $api->expects($this->once())
-            ->method('get')
-            ->with('metrics/dynamicgraphs/?inventoryFilter=test', $expectedParam);
-
-        $result = $api->dynamicMetrics($filter, $start, $end, $searchPattern);
-
-    }
-
 
     /**
     * @test
