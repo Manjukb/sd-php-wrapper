@@ -25,23 +25,22 @@ class Metrics extends AbstractApi
     * Get actual metrics
     * @link     https://developer.serverdensity.com/docs/get-metrics
     * @param    string      $id     the subjectID to get available metrics
-    * @param    array       $filter an array of what you want to filter
+    * @param    array       $metric the metric you want data for
     * @param    timestamp   $start  the start of the period.
     * @param    timestamp   $end    the end of the period
     * @return   an array that is all available metrics.
     */
-    public function metrics($id, $filter, $start, $end){
+    public function metrics($id, $metric, $start, $end){
         $param = array(
             'start' => date("Y-m-d\TH:i:s\Z", $start),
             'end' => date("Y-m-d\TH:i:s\Z", $end),
-            'filter' => $filter
+            'requests' => '[{"metric":"'.$metric.'","scope":[{"item":"'.$id.'"}]}]',
         );
 
         $param = $this->makeJsonReady($param);
 
-        return $this->get('metrics/graphs/'.urlencode($id), $param);
+        return $this->post('metrics/v3/query/', $param);
     }
-
     /**
     * Get dynamic metrics
     * @link     https://developer.serverdensity.com/docs/dynamic-metrics

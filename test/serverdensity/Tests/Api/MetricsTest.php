@@ -69,22 +69,12 @@ class MetricsTest extends TestCase
     */
     public function shouldGetMetrics()
     {
-        $inputFilter = array(
-            'networkTraffic' => array(
-                'eth0' => ['rxMByteS']
-            )
-        );
-
-        $filter = json_encode(array(
-            'networkTraffic' => array(
-                'eth0' => ['rxMByteS']
-            ))
-        );
-
+        $metric = 'system.load.1';
+        $id = '5a79e996b03e85b1378b456f';
         $expectedParam = array(
             'start' => "2013-09-15T00:00:00Z",
             'end' => "2013-09-15T17:10:00Z",
-            'filter' => $filter
+            'requests' => '[{"metric":"'.$metric.'","scope":[{"item":"'.$id.'"}]}]',
         );
 
         $start = mktime(0, 0, 0, 9, 15, 2013);
@@ -92,10 +82,10 @@ class MetricsTest extends TestCase
 
         $api = $this->getApiMock('metrics');
         $api->expects($this->once())
-            ->method('get')
-            ->with('metrics/graphs/1', $expectedParam);
+            ->method('post')
+            ->with('metrics/v3/query/', $expectedParam);
 
-        $result = $api->metrics('1', $filter, $start, $end);
+        $result = $api->metrics('5a79e996b03e85b1378b456f', $metric, $start, $end);
     }
 
     // /**
