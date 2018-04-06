@@ -96,12 +96,14 @@ class AlertsTest extends TestCase
     * @test
     */
     public function shouldUpdateAlert(){
-        $expectedArray = array('_id' => '2', 'section' => 'system');
+        $metric = 'system.load.1';
+        $fields = array('metric' => $metric);
+        $expectedArray = array('metric' => $metric);
 
         $api = $this->getApiMock('alerts');
         $api->expects($this->once())
-            ->method('put')
-            ->with('alerts/configs/1', $expectedArray)
+            ->method('patch')
+            ->with('alerts/v3/configs/1', $expectedArray)
             ->will($this->returnValue($expectedArray));
 
         $this->assertEquals($expectedArray, $api->update('1', $expectedArray));
@@ -110,21 +112,18 @@ class AlertsTest extends TestCase
     /**
     * @test
     */
-    public function shouldUpdateAlertWithOtherArray(){
-        $input = array('_id' => '2', 'section' => 'system');
-
+    public function shouldUpdateAlertWithArray(){
         $wait = array("seconds" => 60);
         $otherArray['wait'] = $wait;
-        $expectedArray = array('_id' => '2', 'section' => 'system');
         $expectedArray['wait'] = json_encode($wait);
 
         $api = $this->getApiMock('alerts');
         $api->expects($this->once())
-            ->method('put')
-            ->with('alerts/configs/1', $expectedArray)
+            ->method('patch')
+            ->with('alerts/v3/configs/1', $expectedArray)
             ->will($this->returnValue($expectedArray));
 
-        $this->assertEquals($expectedArray, $api->update('1', $expectedArray, $otherArray));
+        $this->assertEquals($expectedArray, $api->update('1', $otherArray));
     }
 
    /**

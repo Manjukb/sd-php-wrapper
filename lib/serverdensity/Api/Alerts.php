@@ -56,22 +56,39 @@ class Alerts extends AbstractApi
     * @link     https://developer.serverdensity.com/docs/updating-alerts
     * @param    string  $id     the id of the alert
     * @param    array   $fields the fields to updated in the alert.
-    * @param    array   $other  an array that optionally consists of wait, repeat etc.
     * @return   an array of arrays with devices.
     */
-    public function update($id, $fields, $other=array()){
-        if(array_key_exists('wait', $other)){
-            $fields['wait'] = json_encode($other['wait']);
-        }
-        if(array_key_exists('recipients', $other)){
-            $fields['recipients'] = json_encode($other['recipients']);
-        }
-        if(array_key_exists('repeat', $other)){
-            $fields['repeat'] = json_encode($other['repeat']);
-        }
+    public function update($id, $fields){
+        $alert = array();
 
-
-        return $this->put('alerts/configs/'.rawurlencode($id), $fields);
+        if(array_key_exists('wait', $fields)){
+            $alert['wait'] = json_encode($fields['wait']);
+        }
+        if(array_key_exists('metric', $fields)){
+            $alert['metric'] = $fields['metric'];
+        }
+        if(array_key_exists('comparison', $fields)){
+            $alert['comparison'] = $fields['comparison'];
+        }
+        if(array_key_exists('value', $fields)){
+            $alert['value'] = $fields['value'];
+        }
+        if(array_key_exists('scope', $fields)){
+            $alert['scope'] = json_encode($fields['scope']);
+        }
+        if(array_key_exists('recipients', $fields)){
+            $alert['recipients'] = json_encode($fields['recipients']);
+        }
+        if(array_key_exists('wait', $fields)){
+            $alert['wait'] = json_encode($fields['wait']);
+        }
+        if(array_key_exists('repeat', $fields)){
+            $alert['repeat'] = json_encode($fields['repeat']);
+        }
+        if(array_key_exists('tags', $fields)){
+            $alert['tags'] = json_encode($fields['tags']);
+        }
+        return $this->patch('alerts/v3/configs/'.rawurlencode($id), $alert);
     }
 
 
