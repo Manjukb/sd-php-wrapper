@@ -77,7 +77,7 @@ class AlertsTest extends TestCase
         $api = $this->getApiMock('alerts');
         $api->expects($this->once())
             ->method('get')
-            ->with('alerts/configs/')
+            ->with('alerts/v3/configs/')
             ->will($this->returnValue($expectedArray));
 
         $this->assertEquals($expectedArray, $api->all());

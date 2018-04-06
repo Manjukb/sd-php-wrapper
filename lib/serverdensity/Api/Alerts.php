@@ -37,7 +37,7 @@ class Alerts extends AbstractApi
     * @return   an array of arrays with devices.
     */
     public function all(){
-        return $this->get('alerts/configs/');
+        return $this->get('alerts/v3/configs/');
     }
 
     /**
