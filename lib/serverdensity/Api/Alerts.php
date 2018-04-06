@@ -7,18 +7,29 @@ class Alerts extends AbstractApi
     /**
     * Create an alert
     * @link     https://developer.serverdensity.com/docs/creating-an-alert
-    * @param    array  $alert       with the basic attributes
+    * @param    array  $metric       with the basic attributes
+    * @param    array  $comparison  with all its recipients
+    * @param    array  $value        with seconds, enabled and displayunit
+    * @param    array  $subjectType      with seconds, enabled and displayunit
+    * @param    array  $subject       with the basic attributes
     * @param    array  $recipients  with all its recipients
     * @param    array  $wait        with seconds, enabled and displayunit
     * @param    array  $repeat      with seconds, enabled and displayunit
     * @return   an array that is the alert
     */
-    public function create($alert, $recipients, $wait, $repeat){
+    public function create($metric, $comparison, $value, $subjectType, $subject, $recipients, $wait, $repeat, $tags){
+        $alert = array(
+            'metric' => $metric,
+            'comparison' => $comparison,
+            'value' => $value,
+            'scope' => '{"scope":{"type":"'.$subjectType.'","value":"'.$subject.'"}}',
+        );
         $alert['recipients'] = json_encode($recipients);
         $alert['wait'] = json_encode($wait);
         $alert['repeat'] = json_encode($repeat);
+        $alert['tags'] = json_encode($tags);
 
-        return $this->post('alerts/configs/', $alert);
+        return $this->post('alerts/v3/configs/', $alert);
     }
 
     /**

@@ -14,8 +14,11 @@ class AlertsTest extends TestCase
     * @test
     */
     public function shouldCreateAlert(){
-        $input = array('_id' => '1', 'section' => 'system');
-
+        $metric = 'system.load.1';
+        $comparison = 'gte';
+        $value = '50';
+        $subjectType = 'device';
+        $subject = '1';
         $recipients = array(
             array(
                 array(
@@ -32,21 +35,27 @@ class AlertsTest extends TestCase
 
         $repeat = array("seconds" => 60);
 
-        $expectedArray = array('_id' => '1', 'section' => 'system');
+        $tags = '{"device_name": {"type": "eq", "value": "/dev"}}';
+
+        $expectedArray = array(            'metric' => $metric,
+            'comparison' => $comparison,
+            'value' => $value,
+            'scope' => '{"scope":{"type":"'.$subjectType.'","value":"'.$subject.'"}}',
+            'tags' => json_encode('{"device_name": {"type": "eq", "value": "/dev"}}'),
+        );
 
         $expectedArray['recipients'] = json_encode($recipients);
         $expectedArray['wait'] = json_encode($wait);
         $expectedArray['repeat'] = json_encode($repeat);
 
 
-
         $api = $this->getApiMock('alerts');
         $api->expects($this->once())
             ->method('post')
-            ->with('alerts/configs/', $expectedArray)
+            ->with('alerts/v3/configs/', $expectedArray)
             ->will($this->returnValue($expectedArray));
 
-        $this->assertEquals($expectedArray, $api->create($input, $recipients, $wait, $repeat));
+        $this->assertEquals($expectedArray, $api->create($metric, $comparison, $value, $subjectType, $subject, $recipients, $wait, $repeat, $tags));
     }
 
     /**
